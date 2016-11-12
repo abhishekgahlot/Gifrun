@@ -4,6 +4,9 @@
     "node": ">=4"
   },
   "devDependencies": {
+    "eslint": "^3.4.0",
+    "eslint-config-airbnb": "^10.0.1",
+    "eslint-plugin-react": "^6.2.0",
     "babel-core": "^6.4.0",
     "babel-preset-es2015": "^6.3.13",
     "babel-register": "^6.5.2",
@@ -27,6 +30,26 @@
     "main-bower-files": "^2.5.0",
     "run-sequence": "^1.2.2",
     "wiredep": "^4.0.0"
+  },
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "bluebird": "^3.4.3",
+    "body-parser": "^1.15.2",
+    "connect-redis": "^3.1.0",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-alpha.1",
+    "ejs": "^2.5.2",
+    "eslint-plugin-import": "^1.14.0",
+    "eslint-plugin-jsx-a11y": "^2.2.0",
+    "express": "^4.14.0",
+    "express-session": "^1.14.1",
+    "express-validator": "^2.20.8",
+    "handlebars": "^4.0.5",
+    "jade": "^1.11.0",
+    "mongodb": "^2.2.9",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "rethinkdbdash": "^2.3.26"
   },
   "eslintConfig": {
     "env": {

@@ -89,10 +89,22 @@ app.get('/user', (req, res) => {
 */
 
 passport.use(auth.facebook);
+passport.use(auth.twitter);
+passport.use(auth.google);
 
 app.get('/login/facebook', passport.authenticate('facebook', { scope: ['email'] }));
 app.get('/login/facebook/callback',
   passport.authenticate('facebook', { successRedirect: '/', failureRedirect: '/' })
+);
+
+app.get('/login/twitter', passport.authenticate('twitter', { scope: ['email'] }));
+app.get('/login/twitter/callback',
+  passport.authenticate('twitter', { successRedirect: '/', failureRedirect: '/' })
+);
+
+app.get('/login/google', passport.authenticate('google', { scope: ['email'] }));
+app.get('/login/google/callback',
+  passport.authenticate('google', { successRedirect: '/', failureRedirect: '/' })
 );
 
 passport.serializeUser((user, done) => {

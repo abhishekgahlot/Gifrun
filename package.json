@@ -49,6 +49,8 @@
     "mongodb": "^2.2.9",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
+    "passport-google-oauth": "^1.0.0",
+    "passport-twitter": "^1.0.4",
     "rethinkdbdash": "^2.3.26"
   },
   "eslintConfig": {

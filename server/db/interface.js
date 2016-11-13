@@ -7,9 +7,10 @@ const db = require('rethinkdbdash')({
     db: config.db.name
 })();
 
-const url = config.db.url;
-const index = config.db.index;
 
+/*
+  Create db if not present.
+*/
 function createDB(r, name) {
   return new Promise((resolve, reject) => {
     r.dbList().run().then((list) => {
@@ -27,7 +28,11 @@ function createDB(r, name) {
   });
 }
 
-function createTable(r, dbName, tableName) {
+
+/*
+  Create table if not present in db with primarykey as optional.
+*/
+function createTable(r, dbName, tableName, primaryKey) {
   return new Promise((resolve, reject) => {
     r.tableList().run().then((list) => {
       if (list.indexOf(tableName) > -1) {
@@ -35,15 +40,24 @@ function createTable(r, dbName, tableName) {
         resolve(true);
       } else {
         log(`Table ${tableName} not found. Creating one.`);
-        r.db(dbName).tableCreate(tableName, {primaryKey: config.db.indexField}).run().then(() => {
-          resolve(true);
-        });
+        if (primaryKey) {
+          r.db(dbName).tableCreate(tableName, {primaryKey}).run().then(() => {
+            resolve(true);
+          });
+        } else {
+          r.db(dbName).tableCreate(tableName).run().then(() => {
+            resolve(true);
+          });
+        }
       }
     });
   });
 }
 
 
+/*
+  Create secondary index on table provided.
+*/
 function createIndex(r, indexTable, indexField) {
   return new Promise((resolve, reject) => {
     r.table(indexTable).indexList().run().then((list) => {
@@ -61,37 +75,33 @@ function createIndex(r, indexTable, indexField) {
 }
 
 
-function ensureIndex(db) {
-  log('Ensuring indexes on RethinkDB');
+/*
+  Prepare database.
+  Create one.
+  Create tables.
+  Create indexes if given in config.
+*/
+function prepareDB(db) {
+  log('Ensuring database is fine.');
   return new Promise((resolve) => {
     createDB(db, config.db.name)
     .then(() => {
-      return createTable(db, config.db.name, config.db.indexTable);
+      return createTable(db, config.db.name, config.db.users.name, config.db.users.indexField);
     })
     .then(() => {
-      //createIndex(db, config.db.indexTable, config.db.indexField).then(() => {
-        resolve(true);
-      //});
+      return createTable(db, config.db.name, config.db.gifs.name);
+    })
+    .then(() => {
+      return createIndex(db, config.db.gifs.name, config.db.gifs.secondaryIndexField);
+    })
+    .then(() => {
+      resolve(true);
     });
   });
 }
 
-// function connectMongo() {
-//   log('Connecting to Mongo server');
-//   return new Promise((resolve) => {
-//     MongoClient.connect(url, (err, db) => {
-//       assert.equal(null, err);
-//       global.db = db;
-//       ensureIndex(db).then(() => {
-//         resolve(db);
-//       });
-//     });
-//   });
-// }
-
-
 
 module.exports = {
-  ensureIndex,
+  prepareDB,
   db
 };

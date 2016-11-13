@@ -100,7 +100,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((email, done) => {
-  dbw.findOne('users', { email })
+  dbw.findPrimary('users', email)
   .then((user) => {
     done(null, user);
   })
@@ -108,6 +108,7 @@ passport.deserializeUser((email, done) => {
     done(err, null);
   });
 });
+
 
 /*
   Signin Route with Validation
@@ -167,7 +168,7 @@ app.get('/logout', (req, res) => {
 /*
   Start app after db connection is available
 */
-database.ensureIndex(database.db).then(() => {
+database.prepareDB(database.db).then(() => {
   app.listen(config.port, () => {
     global.db = database.db;
     log(`Listening on ${config.port}`);

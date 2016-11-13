@@ -8,6 +8,9 @@
 }*/
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100,300italic,500,700,900);
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
+@import url('https://fonts.googleapis.com/css?family=Kreon');
+@import url('https://fonts.googleapis.com/css?family=Architects+Daughter');
 
 html, body{
   height: 100%;
@@ -22,14 +25,24 @@ html, body{
   outline:none;
 }
 
+.btn-social {
+  font-size: 16px;
+  line-height: 49px !important;
+  height: 49px !important;
+}
 
 .btn-social :first-child {
-    left: 4px !important;
-    top: 2px !important;
+  left: 16px !important;
+  top: 2px !important;
+  line-height: 46px !important;
+}
+
+.btn-social span{
+  margin-left: 16px;
 }
 
 .modal-sm {
-    width: 440px !important;
+  width: 440px !important;
 }
 
 /*Helpers*/
@@ -176,9 +189,15 @@ body{
   margin-bottom: 0px !important;
 }
 
+.modal-main {
+  width: 518px;
+}
+
 .panel-body .modal-title {
   margin-bottom: 28px !important;
   color: #6b6b6b;
+  font-size: 24px;
+  text-transform: uppercase;
 }
 
 .handle-btn {
@@ -372,7 +391,8 @@ a:focus, a:hover{
 }*/
 
 .mdl-layout-title {
-  font-size: 30px;
+  font-size: 27px;
+  font-family: 'Slabo 27px', sans-serif;  /*'Slabo 27px', sans-serif; 'Architects Daughter', cursive; */
 }
 
 .searchbar {
@@ -403,6 +423,7 @@ a:focus, a:hover{
 
 .searchbar .btn{
   border: 1px solid #fff;
+  border-left: 1px solid #e8e8e8;
   padding-bottom: 6px;
   padding-top: 7px;
   font-size: 18px;
@@ -503,4 +524,8 @@ a:focus, a:hover{
   -webkit-transform: translateX(0);
   -ms-transform: translateX(0);
   transform: translateX(0);  
+}
+
+.mdl-navigation__link {
+  font-size: 16px;
 }

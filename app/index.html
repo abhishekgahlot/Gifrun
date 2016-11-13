@@ -35,7 +35,7 @@
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
           <!-- Title -->
-          <span class="mdl-layout-title">GIF</span>
+          <span class="mdl-layout-title">GIF.RUN</span>
           <!-- Add spacer, to align navigation to the right -->
           <!-- <div class="h-search-wrap">
             <div class="hsw-inner">
@@ -122,7 +122,7 @@
 
     <!-- Login Modal -->
     <div class="modal fade" id="loginUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-dialog modal-main" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -130,13 +130,13 @@
                 <div class="panel-body">
                   <h4 class="modal-title" id="myModalLabel">Sign In</h4>
                   <div class="form-group text-center">
-                      <a class="btn btn-block btn-social btn-facebook mdl-button mdl-js-button mdl-button--raised mdl-button--colored" target="_self" href="/login/facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</a>
+                      <a class="btn btn-block btn-social btn-facebook mdl-button mdl-js-button mdl-button--raised mdl-button--colored" target="_self" href="/login/facebook"><i class="fa fa-facebook"></i> <span>Sign in with Facebook</span></a>
                   </div>
                   <div class="form-group text-center mg-top">
-                      <a class="btn btn-block btn-social btn-google-plus mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-red" target="_self" href="/login/google"><i class="fa fa-google"></i> Sign in with Google</a>
+                      <a class="btn btn-block btn-social btn-google-plus mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-red" target="_self" href="/login/google"><i class="fa fa-google"></i> <span>Sign in with Google</span></a>
                   </div>
                   <div class="form-group text-center mg-top">
-                      <a class="btn btn-block btn-social btn-twitter mdl-button mdl-js-button mdl-button--raised mdl-button--accent" target="_self"><i class="fa fa-twitter"></i> Sign in with Twitter</a>
+                      <a class="btn btn-block btn-social btn-twitter mdl-button mdl-js-button mdl-button--raised mdl-button--accent" target="_self"><i class="fa fa-twitter"></i> <span>Sign in with Twitter</span></a>
                   </div>
                 </div>
               </div>
@@ -147,7 +147,7 @@
 
     <!-- Register Modal -->
     <div class="modal fade" id="registerUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-dialog modal-main" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -155,13 +155,13 @@
                     <div class="panel-body">
                         <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
                         <div class="form-group text-center">
-                            <a class="btn btn-block btn-social btn-facebook mdl-button mdl-js-button mdl-button--raised mdl-button--colored" target="_self"><i class="fa fa-facebook"></i> Sign up with Facebook</a>
+                            <a class="btn btn-block btn-social btn-facebook mdl-button mdl-js-button mdl-button--raised mdl-button--colored" target="_self"><i class="fa fa-facebook"></i> <span>Sign up with Facebook</span></a>
                         </div>
                         <div class="form-group text-center mg-top">
-                            <a class="btn btn-block btn-social btn-google-plus mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-red" target="_self"><i class="fa fa-google"></i> Sign up with Google</a>
+                            <a class="btn btn-block btn-social btn-google-plus mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-red" target="_self"><i class="fa fa-google"></i> <span>Sign up with Google</span></a>
                         </div>
                         <div class="form-group text-center mg-top">
-                            <a class="btn btn-block btn-social btn-twitter mdl-button mdl-js-button mdl-button--raised mdl-button--accent" target="_self"><i class="fa fa-twitter"></i> Sign up with Twitter</a>
+                            <a class="btn btn-block btn-social btn-twitter mdl-button mdl-js-button mdl-button--raised mdl-button--accent" target="_self"><i class="fa fa-twitter"></i> <span>Sign up with Twitter</span></a>
                         </div>
                     </div>
                 </div>
@@ -170,30 +170,6 @@
       </div>
     </div>
 
-    <!-- Choose Username Modal -->
-    <div class="modal fade" id="usernameModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <h4 class="modal-title" id="myModalLabel">Pick Handle</h4>
-                    <form role="form">
-                      <div class="form-group">
-                        <input class="form-control primary" id="exampleInputEmail1" placeholder="Name" type="text">
-                      </div>
-                      <div class="form-group">
-                        <input autofocus="" class="form-control primary" id="exampleInputEmail1" placeholder="Handle" type="text">
-                      </div>
-                      <button class="btn btn-primary handle-btn" type="submit">Done</button>
-                    </form>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

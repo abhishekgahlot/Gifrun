@@ -17,7 +17,7 @@ const facebook = new FacebookStrategy(fbData,
       name: `${firstname} ${lastname}`,
       email: profile.emails.shift().value,
     };
-    dbw.findOne('users', { email: user.email })
+    dbw.findPrimary(config.db.users.name, user.email)
     .then((data) => {
       if (!data) {
         dbw.insert('users', user)

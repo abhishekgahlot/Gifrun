@@ -5,10 +5,11 @@ const dbw = require('../db/wrapper').dbw;
 const tableName = table.name;
 const tableIndex = table.secondaryIndexField;
 
-function syncdb() {
+function syncfiles() {
   return new Promise((resolve, reject) => {
     s3.getFiles().then((data) => {
       let files = data.Contents;
+      let i = 0;
       for (let file of files) {
         let filedb = {
           name: file.Key.replace('img/','').replace('.gif', ''),
@@ -23,10 +24,16 @@ function syncdb() {
           } else {
             return Promise.resolve([]);
           }
-        });
+        })
+        .then((data) => {
+          i += 1;
+          if (i === files.length) {
+            return resolve(true);
+          }
+        })
       }
     });
   });
 }
 
-module.exports = syncdb;
+module.exports = syncfiles;

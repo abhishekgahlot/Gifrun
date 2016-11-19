@@ -12,7 +12,6 @@ const config = require('./config');
 const bluebird = require('bluebird');
 const database = require('./server/db/interface');
 const dbw = require('./server/db/wrapper').dbw;
-const syncdb = require('./server/files/syncdb');
 
 global.Promise = bluebird;
 
@@ -196,7 +195,6 @@ app.get('/files', (req, res) => {
 database.prepareDB(database.db).then(() => {
   app.listen(config.port, () => {
     global.db = database.db;
-    syncdb();
     log(`Listening on ${config.port}`);
   });
 });

@@ -1,10 +1,33 @@
+Vue.http.get('/user').then(function(user){
+  window.user = user.body;
+  if (user.body.name) {
+    $("#user-name").text("Hi "+user.body.name.split(' ').shift());
+    $("#user-nav").show();
+    $("#normal-nav").hide();
+  }
+});
 var app = new Vue({
   el: '#app',
   data: {
-    gifs: [
-      { message: 'Foo', link: 'https://media.giphy.com/media/3oz8xEDAGOgSqtke1q/giphy.gif' },
-      { message: 'Bar', link: 'https://66.media.tumblr.com/b948b4d80d72b67d82b0f7417051d70a/tumblr_og97gfVwEZ1u929uoo1_400.gif' }
-    ]
+    gifs: []
+  },
+  mounted: function() {
+    this.getFiles()
+    .then(function(){
+      gipher();
+    })
+
+  },
+  methods: {
+    getFiles: function() {
+      return new Promise(function(resolve, reject) {
+        this.$http.get('/files')
+        .then(function(files){
+          this.gifs = files.body;
+          resolve(true);
+        });
+      }.bind(this));
+    }
   }
 });
-gipher();
+

@@ -64,10 +64,23 @@
             </div>
           </div> -->
           <!-- Navigation. We hide it in small screens. -->
-          <nav class="mdl-navigation">
-
+          <nav class="mdl-navigation" id="normal-nav">
             <a class="mdl-navigation__link" data-toggle="modal" data-target="#loginUser">Sign in</a>
             <a class="mdl-navigation__link" data-toggle="modal" data-target="#registerUser">Sign up</a>
+          </nav>
+
+          <nav class="mdl-navigation" id="user-nav" style="display: none;">
+            <button id="user-menu-lower-right"
+                    class="mdl-button mdl-js-button">
+              <i class="material-icons">more_vert</i>
+            </button>
+
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                for="user-menu-lower-right">
+              <li disabled id="user-name" class="mdl-menu__item"></li>
+              <li class="mdl-menu__item"><a href="/#settings">Settings</a></li>
+              <li class="mdl-menu__item"><a href="/logout">Logout</a></li>
+            </ul>
           </nav>
         </div>
       </header>
@@ -82,7 +95,7 @@
       </div>
 
       <div class="mdl-layout__drawer-right active">
-        <span class="mdl-layout-title">Title</span>
+        <span class="mdl-layout-title">Trending</span>
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link" href="">Link</a>
           <a class="mdl-navigation__link" href="">Link</a>
@@ -186,9 +199,11 @@
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/material-design-lite/material.min.js"></script>
+    <script src="/bower_components/vue/dist/vue.js"></script>
+    <script src="/bower_components/vue-resource/dist/vue-resource.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-    <script src="/bower_components/vue/dist/vue.js"></script>
+
     <!-- build:js scripts/plugins.js -->
     <script src="/bower_components/bootstrap/js/affix.js"></script>
     <script src="/bower_components/bootstrap/js/alert.js"></script>

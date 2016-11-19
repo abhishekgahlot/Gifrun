@@ -528,4 +528,19 @@ a:focus, a:hover{
 
 .mdl-navigation__link {
   font-size: 16px;
+  cursor: pointer;
+}
+
+#user-menu-lower-right{
+  color: #fff;
+  margin-right: 50px;
+}
+
+#user-name {
+  font-weight: 500;
+  color: black;
+}
+
+img:focus, canvas:focus, :focus {
+  outline: none;
 }

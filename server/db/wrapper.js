@@ -58,9 +58,15 @@ const dbw = {
     });
   },
 
-  find: (table, data) => {
+  find: (table, data, limit) => {
     return new Promise((resolve, reject) => {
-      db.table(table).filter(data).run()
+      let promise;
+      if (limit) {
+        promise = db.table(table).filter(data).limit(limit).run()
+      } else {
+        promise = db.table(table).filter(data).run();
+      }
+      promise
       .then((r) => {
         resolve(r);
       })

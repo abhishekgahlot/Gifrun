@@ -5,7 +5,8 @@
     "bootstrap": "~3.3.5",
     "material-design-lite": "^1.2.1",
     "font-awesome": "^4.7.0",
-    "vue": "^2.0.5"
+    "vue": "^2.0.7",
+    "vue-resource": "^1.0.3"
   },
   "overrides": {
     "bootstrap": {
@@ -14,6 +15,11 @@
         "dist/css/bootstrap.css",
         "dist/js/bootstrap.js",
         "dist/fonts/*"
+      ]
+    },
+    "vue": {
+      "main": [
+        "dist/vue.js"
       ]
     }
   },

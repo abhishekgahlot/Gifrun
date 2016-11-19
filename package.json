@@ -32,6 +32,7 @@
     "wiredep": "^4.0.0"
   },
   "dependencies": {
+    "aws-sdk": "^2.7.5",
     "bcrypt": "^0.8.7",
     "bluebird": "^3.4.3",
     "body-parser": "^1.15.2",

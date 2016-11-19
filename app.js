@@ -12,6 +12,7 @@ const config = require('./config');
 const bluebird = require('bluebird');
 const database = require('./server/db/interface');
 const dbw = require('./server/db/wrapper').dbw;
+const syncdb = require('./server/files/syncdb');
 
 global.Promise = bluebird;
 
@@ -176,6 +177,18 @@ app.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
+app.get('/files', (req, res) => {
+  dbw.find('gifs', {}, 20).then((data) => {
+    let newData = []
+    for(let file of data) {
+      newData.push({
+        message: file.name,
+        link: config.s3.prefix + file.name + '.gif'
+      });
+    }
+    res.json(newData);
+  })
+});
 
 /*
   Start app after db connection is available
@@ -183,6 +196,7 @@ app.get('/logout', (req, res) => {
 database.prepareDB(database.db).then(() => {
   app.listen(config.port, () => {
     global.db = database.db;
+    syncdb();
     log(`Listening on ${config.port}`);
   });
 });

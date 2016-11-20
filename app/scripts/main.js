@@ -1,9 +1,14 @@
 Vue.http.get('/user').then(function(user){
   window.user = user.body;
   if (user.body.name) {
-    $('#user-name').text('Hi '+user.body.name.split(' ').shift());
-    $('#user-nav').show();
-    $('#normal-nav').hide();
+    var userDiv = document.getElementById('user-name');
+    userDiv.textContent = 'Hi '+user.body.name.split(' ').shift();
+
+    var userNav = document.getElementById('user-nav');
+    userNav.style.display = '';
+
+    var normalNav = document.getElementById('normal-nav');
+    normalNav.style.display = 'none';
   }
 });
 
@@ -16,11 +21,7 @@ var app = new Vue({
     setTimeout(function(){
       this.getFiles()
       .then(function(){
-        $('#app img').each(function() {
-            $(this).on('load', function() {
-              console.log('loaded');
-            });
-         });
+        
       });
     }.bind(this), 1000);
   },

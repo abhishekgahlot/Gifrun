@@ -16,9 +16,7 @@
         "dist/css/bootstrap.css",
         "dist/fonts/*"
       ],
-      "dependencies": {
-        
-      }
+      "dependencies": {}
     },
     "vue": {
       "main": [

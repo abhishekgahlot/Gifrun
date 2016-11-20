@@ -1,25 +1,33 @@
 {
-  "name": "test",
+  "name": "gifrun",
   "private": true,
   "dependencies": {
     "bootstrap": "~3.3.5",
     "material-design-lite": "^1.2.1",
     "font-awesome": "^4.7.0",
     "vue": "^2.0.7",
-    "vue-resource": "^1.0.3"
+    "vue-resource": "^1.0.3",
+    "bootstrap.native": "^1.0.6"
   },
   "overrides": {
     "bootstrap": {
       "main": [
         "less/bootstrap.less",
         "dist/css/bootstrap.css",
-        "dist/js/bootstrap.js",
         "dist/fonts/*"
-      ]
+      ],
+      "dependencies": {
+        
+      }
     },
     "vue": {
       "main": [
         "dist/vue.js"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "css/font-awesome.min.css"
       ]
     }
   },

@@ -177,12 +177,13 @@ app.get('/logout', (req, res) => {
 });
 
 app.get('/files', (req, res) => {
-  dbw.find('gifs', {}, 20).then((data) => {
+  dbw.find('gifs', {}, 10).then((data) => {
     let newData = []
     for(let file of data) {
       newData.push({
         message: file.name,
-        link: config.s3.prefix + file.name + '.gif'
+        link: config.s3.prefix + file.name + '.gif',
+        thumbnail: config.s3.prefix + file.name + '.jpg'
       });
     }
     res.json(newData);

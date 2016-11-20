@@ -538,7 +538,7 @@ a:focus, a:hover{
 
 #user-name {
   font-weight: 500;
-  color: black;
+  color: #878787;
 }
 
 img:focus, canvas:focus, :focus {

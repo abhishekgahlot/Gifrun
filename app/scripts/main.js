@@ -1,22 +1,28 @@
 Vue.http.get('/user').then(function(user){
   window.user = user.body;
   if (user.body.name) {
-    $("#user-name").text("Hi "+user.body.name.split(' ').shift());
-    $("#user-nav").show();
-    $("#normal-nav").hide();
+    $('#user-name').text('Hi '+user.body.name.split(' ').shift());
+    $('#user-nav').show();
+    $('#normal-nav').hide();
   }
 });
+
 var app = new Vue({
   el: '#app',
   data: {
     gifs: []
   },
   mounted: function() {
-    this.getFiles()
-    .then(function(){
-      gipher();
-    })
-
+    setTimeout(function(){
+      this.getFiles()
+      .then(function(){
+        $('#app img').each(function() {
+            $(this).on('load', function() {
+              console.log('loaded');
+            });
+         });
+      });
+    }.bind(this), 1000);
   },
   methods: {
     getFiles: function() {

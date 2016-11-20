@@ -109,10 +109,9 @@
         <div class="page-content">
           <div class="mdl-grid">
             <div class="center" id="app">
-
-              <div class="card-wide mdl-card mdl-shadow--2dp" v-for="gif in gifs">
+              <div class="card-wide mdl-card mdl-shadow--2dp" v-for="(gif, index) in gifs">
                 <div class="mdl-card__title">
-                 <img class="gif" :data-gif="gif.link" :src="gif.thumbnail"/>
+                 <img class="gif" :id="index" :data-gif="gif.link" :src="gif.thumbnail"/>
                 </div>
                 <div class="mdl-card__supporting-text">
                   {{ gif.message }}
@@ -201,6 +200,8 @@
     <script src="/bower_components/vue/dist/vue.js"></script>
     <script src="/bower_components/vue-resource/dist/vue-resource.js"></script>
     <script src="/bower_components/bootstrap.native/dist/bootstrap-native.js"></script>
+    <script src="/bower_components/ev-emitter/ev-emitter.js"></script>
+    <script src="/bower_components/imagesloaded/imagesloaded.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

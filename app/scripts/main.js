@@ -21,8 +21,8 @@ var app = new Vue({
     setTimeout(function(){
       this.getFiles()
       .then(function(){
-        
-      });
+        this.imageHandler();
+      }.bind(this));
     }.bind(this), 1000);
   },
   methods: {
@@ -34,7 +34,15 @@ var app = new Vue({
           resolve(true);
         });
       }.bind(this));
+    },
+    imageHandler: function() {
+      var imgLoad = imagesLoaded(document.querySelectorAll('#app img'));
+      imgLoad.on( 'progress', function( instance, image ) {
+        var result = image.isLoaded ? 'loaded' : 'broken';
+        console.log( 'image is ' + result + ' for ' + image.img.src );
+      });
     }
   }
 });
+
 

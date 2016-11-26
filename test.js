@@ -6,7 +6,7 @@ let list = [];
 // });
 
 
-cloudVision('https://s3.eu-central-1.amazonaws.com/gifrun/img/fcc0c69e7fe3ca7def6bde0898601f59.jpg')
+cloudVision('https://s3.eu-central-1.amazonaws.com/gifrun/img/005157a4fe997830c2c468abef20a0b7.jpg')
 .then((data) => {
   console.log(data);
 })

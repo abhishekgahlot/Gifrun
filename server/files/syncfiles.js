@@ -7,8 +7,9 @@ const tableIndex = table.secondaryIndexField;
 
 function syncfiles() {
   return new Promise((resolve, reject) => {
-    s3.getFiles().then((data) => {
-      let files = data;
+    let list = [];
+    s3.getAllFiles(list).then(() => {
+      let files = list;
       let i = 0;
       for (let file of files) {
         let filedb = {

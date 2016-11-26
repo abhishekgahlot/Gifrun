@@ -32,6 +32,7 @@
     "wiredep": "^4.0.0"
   },
   "dependencies": {
+    "@google-cloud/vision": "^0.6.0",
     "aws-sdk": "^2.7.5",
     "bcrypt": "^0.8.7",
     "bluebird": "^3.4.3",
@@ -45,6 +46,7 @@
     "express": "^4.14.0",
     "express-session": "^1.14.1",
     "express-validator": "^2.20.8",
+    "google-cloud": "^0.44.0",
     "handlebars": "^4.0.5",
     "jade": "^1.11.0",
     "mongodb": "^2.2.9",

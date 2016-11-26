@@ -6,10 +6,6 @@ AWS.config.update(s3config);
 
 const s3server = new AWS.S3({apiVersion: '2006-03-01'});
 
-Array.prototype.extend = function (array) {
-  array.forEach(this.push, this);    
-}
-
 const s3 = {
 
   getFiles: function(continueToken) {

@@ -27,14 +27,14 @@ html, body{
 
 .btn-social {
   font-size: 16px;
-  line-height: 49px !important;
-  height: 49px !important;
+  line-height: 43px !important;
+  height: 43px !important;
 }
 
 .btn-social :first-child {
   left: 16px !important;
   top: 2px !important;
-  line-height: 46px !important;
+  line-height: 41px !important;
 }
 
 .btn-social span{

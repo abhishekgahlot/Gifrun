@@ -544,3 +544,16 @@ a:focus, a:hover{
 img:focus, canvas:focus, :focus {
   outline: none;
 }
+
+/* Tags */
+.mdl-chip {
+  margin-left: 5px;
+  background-color: #607d8b;
+  color: #fff;
+}
+
+.favorite-icon {
+  font-size: 30px;
+}
+.share-icon {
+}

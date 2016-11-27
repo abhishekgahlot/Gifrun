@@ -19,7 +19,6 @@ const stream = {
     return new Promise((resolve, reject) => {
       dbw.find('gifs', {}, count)
       .then((data) => { 
-        console.log(JSON.stringify(data));
         let newData = []
         for(let file of data) {
           newData.push({

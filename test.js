@@ -1,15 +1,15 @@
 const syncdb = require('./server/files/s3');
 const cloudVision = require('./server/cloudvision/cloudvision');
 let list = [];
-// syncdb.getAllFiles(list).then((data)=>{
-//   console.log(list);
-// });
+syncdb.getAllFiles(list).then((data)=>{
+  console.log(list.length);
+});
 
 
-cloudVision('https://s3.eu-central-1.amazonaws.com/gifrun/img/d4a2f3c1c731f0abf581e31e1b6fcd55.jpg')
-.then((data) => {
-  console.log(data);
-})
+// cloudVision('https://s3.eu-central-1.amazonaws.com/gifrun/img/ac87510d1cbee632b87d3a988e98e53d.jpg')
+// .then((data) => {
+//   console.log(data);
+// })
 
 // 683a4f51b62abd9a4563de4e144c74f9
 

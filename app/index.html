@@ -79,13 +79,13 @@
             <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                 for="user-menu-lower-right">
               <li disabled id="user-name" class="mdl-menu__item"></li>
-              <li class="mdl-menu__item"><a href="/#settings">Settings</a></li>
+              <!-- <li class="mdl-menu__item"><a href="/#settings">Settings</a></li> -->
               <li class="mdl-menu__item"><a href="/logout">Logout</a></li>
             </ul>
           </nav>
         </div>
       </header>
-      <div class="mdl-layout__drawer">
+      <div class="mdl-layout__drawer" style="display:none;">
         <span class="mdl-layout-title">Title</span>
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link" href="">Link</a>
@@ -95,7 +95,7 @@
         </nav>
       </div>
 
-      <div class="mdl-layout__drawer-right active">
+      <div class="mdl-layout__drawer-right" style="display: none;">
         <span class="mdl-layout-title">Trending</span>
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link" href="">Link</a>
@@ -114,7 +114,7 @@
                  <img class="gif" :id="index" :data-gif="gif.link" :src="gif.thumbnail"/>
                 </div>
                 <div class="mdl-card__supporting-text">
-                  {{ gif.message }}
+                  {{ gif.tags }}
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
                     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">

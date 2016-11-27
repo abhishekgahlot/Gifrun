@@ -12,6 +12,7 @@ const config = require('./config');
 const bluebird = require('bluebird');
 const database = require('./server/db/interface');
 const dbw = require('./server/db/wrapper').dbw;
+const stream = require('./server/stream/stream');
 
 global.Promise = bluebird;
 
@@ -177,17 +178,10 @@ app.get('/logout', (req, res) => {
 });
 
 app.get('/files', (req, res) => {
-  dbw.find('gifs', {}, 10).then((data) => {
-    let newData = []
-    for(let file of data) {
-      newData.push({
-        message: file.name,
-        link: config.s3.prefix + file.name + '.gif',
-        thumbnail: config.s3.prefix + file.name + '.jpg'
-      });
-    }
-    res.json(newData);
-  })
+  stream.random(50)
+  .then((data) => {
+    res.json(data);
+  });
 });
 
 /*

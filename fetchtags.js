@@ -15,19 +15,24 @@ fs.readFile('files.txt', 'utf8', function (err,list) {
         link: link
     });
   });
-
-  let i = 0;
-  setInterval(() => {
-    cloudVision(data[i].link)
-    .then((tags) => {
-      newData.push({
-        name: data[i].name,
-        tags: tags
-      });
-      fs.writeFile("tags.txt", JSON.stringify(newData), function(err) {
-        console.log(JSON.stringify(newData));
-      });
-    });
-    i += 1;
-  }, 2000);
+  console.log(data.length);
+  // let i = 0;
+  // setInterval(() => {
+  //   cloudVision(data[i].link)
+  //   .then((tags) => {
+  //     newData.push({
+  //       name: data[i].name,
+  //       tags: tags
+  //     });
+  //     fs.writeFile("newtags.txt", JSON.stringify(newData), function(err) {
+  //     });
+  //   });
+  //   i += 1;
+  // }, 1500);
 });
+// let list = [];
+// syncdb.getAllFiles(list).then((data)=>{
+//   fs.writeFile("files.txt", JSON.stringify(list), function(err) {
+//   });
+// });
+

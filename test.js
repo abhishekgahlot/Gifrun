@@ -1,10 +1,12 @@
 const syncdb = require('./server/files/s3');
 const cloudVision = require('./server/cloudvision/cloudvision');
+var fs = require('fs');
+
 let list = [];
 syncdb.getAllFiles(list).then((data)=>{
-  console.log(list.length);
+  fs.writeFile("files.txt", JSON.stringify(list), function(err) {
+  });
 });
-
 
 // cloudVision('https://s3.eu-central-1.amazonaws.com/gifrun/img/ac87510d1cbee632b87d3a988e98e53d.jpg')
 // .then((data) => {

@@ -555,5 +555,16 @@ img:focus, canvas:focus, :focus {
 .favorite-icon {
   font-size: 30px;
 }
-.share-icon {
+
+.share-outer {
+  float: right;
+}
+
+.gif-play {
+  z-index: 999999;
+  color: #fff;
+  font-size: 60px;
+  margin-left: -32px;
+  position: absolute;
+  left: 50%;
 }

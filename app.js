@@ -178,7 +178,7 @@ app.get('/logout', (req, res) => {
 });
 
 app.get('/files', (req, res) => {
-  stream.random(50)
+  stream.random(20)
   .then((data) => {
     res.json(data);
   });

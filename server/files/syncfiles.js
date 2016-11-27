@@ -7,7 +7,7 @@ const tableIndex = table.secondaryIndexField;
 
 var fs = require('fs');
 let tags = [];
-fs.readFile('tags.txt', 'utf8', function (err,list) {
+fs.readFile('newtags.txt', 'utf8', function (err,list) {
   tags = JSON.parse(list);
 });
 

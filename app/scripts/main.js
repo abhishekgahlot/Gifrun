@@ -39,7 +39,8 @@ var app = new Vue({
       var imgLoad = imagesLoaded(document.querySelectorAll('#app img'));
       imgLoad.on( 'progress', function( instance, image ) {
         var result = image.isLoaded ? 'loaded' : 'broken';
-        console.log( 'image is ' + result + ' for ' + image.img.src );
+        console.log( 'image is ' + result + ' for ' + image.img.src, image.img.getAttribute('data-gif') );
+        window.bat = image;
       });
     }
   }

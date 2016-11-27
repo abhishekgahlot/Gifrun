@@ -79,7 +79,7 @@
             <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                 for="user-menu-lower-right">
               <li disabled id="user-name" class="mdl-menu__item"></li>
-              <li class="mdl-menu__item"><a href="/#Favourites">Favourites</a></li>
+              <li class="mdl-menu__item"><a href="/#favourites">Favourites</a></li>
               <li class="mdl-menu__item"><a href="/logout">Logout</a></li>
             </ul>
           </nav>
@@ -111,7 +111,8 @@
             <div class="center" id="app">
               <div class="card-wide mdl-card mdl-shadow--2dp" v-for="(gif, index) in gifs">
                 <div class="mdl-card__title">
-                 <img class="gif" :id="index" :data-gif="gif.link" :src="gif.thumbnail"/>
+                 <img class="gif" :id="index" :thumb="gif.thumbnail" :gif="gif.link" :src="gif.thumbnail"/>
+                 <i class="material-icons gif-play">play_circle_filled</i>
                 </div>
                 <div class="mdl-card__supporting-text">
                   <button type="button" class="mdl-chip" v-for="(tag, index) in gif.tags">
@@ -119,11 +120,11 @@
                   </button>
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect favorite-outer">
-                      <i class="material-icons">favorite</i>
-                    </a>
+                   <!--  <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect favorite-outer">
+                      <i class="material-icons">favourite_border</i>
+                    </a> -->
 
-                    <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect share-outer">
                     <i class="material-icons share-icon">share</i>
                   </button>
 

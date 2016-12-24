@@ -50,13 +50,13 @@ var app = new Vue({
 var search = new Vue({
   el: '#search',
   data: {
-
+    searchResults = []
   },
   mounted: function() {
     var searchBar = document.getElementById('search-bar');
     var mainBody = document.querySelector('.main-body');
     var searchBody = document.getElementById('search');
-    
+
     searchBar.onkeyup = function(){
       if (searchBar.value) {
         mainBody.style.display = "none";

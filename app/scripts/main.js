@@ -1,3 +1,4 @@
+
 Vue.http.get('/user').then(function(user){
   window.user = user.body;
   if (user.body.name) {
@@ -18,12 +19,15 @@ var app = new Vue({
     gifs: []
   },
   mounted: function() {
+    var that = this;
     setTimeout(function(){
-      this.getFiles()
+      that.getFiles()
       .then(function(){
-        this.imageHandler();
-      }.bind(this));
-    }.bind(this), 1000);
+        that.imageHandler();
+      });
+    }, 500);
+    searchBtn = document.getElementById('searchBtn');
+    searchBtn.onclick = this.search;
   },
   methods: {
     getFiles: function() {
@@ -42,6 +46,11 @@ var app = new Vue({
         console.log( 'image is ' + result + ' for ' + image.img.src, image.img.getAttribute('data-gif') );
         window.bat = image;
       });
+    },
+    search: function() {
+      if (document.getElementById('search-bar').value) {
+        search._render();
+      }
     }
   }
 });
@@ -50,9 +59,10 @@ var app = new Vue({
 var search = new Vue({
   el: '#search',
   data: {
-    searchResults = []
+    searchResults: []
   },
   mounted: function() {
+    var that = this;
     var searchBar = document.getElementById('search-bar');
     var mainBody = document.querySelector('.main-body');
     var searchBody = document.getElementById('search');
@@ -61,6 +71,11 @@ var search = new Vue({
       if (searchBar.value) {
         mainBody.style.display = "none";
         searchBody.style.display = "block";
+        Vue.http.get('/search?query=' + searchBar.value)
+        .then(function(result){
+          that.searchResults = result.body;
+          search._render();
+        });
       } else {
         mainBody.style.display = "block";
         searchBody.style.display = "none";
@@ -69,7 +84,7 @@ var search = new Vue({
   },
   methods: {
     getSearch: function() {
-
+      console.log('bat')
     }
   }
 });

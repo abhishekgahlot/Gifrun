@@ -48,7 +48,7 @@
           <div class="input-group searchbar">
             <input type="text" class="form-control search-input" id="search-bar" placeholder="Search">
             <span class="input-group-btn">
-              <button class="btn btn-default" type="button"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+              <button class="btn btn-default" type="button" id="searchBtn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
             </span>
           </div>
           <div class="mdl-layout-spacer"></div>
@@ -106,14 +106,28 @@
        </div>
       <main class="mdl-layout__content main-search" style="display:none;" id="search">
         <div class="page-content">
+          <h2>Search</h2>
           <div class="mdl-grid">
-            <h2>Search</h2>
-            <div class="mdl-grid">
-              <div class="mdl-cell mdl-cell--4-col">
-                
+             <!-- start card -->
+              <div class="mdl-cell mdl-cell--4-col" v-for="(gif, index) in searchResults">
+                <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                  <div class="mdl-card__title">
+                   <img class="gif" style="overflow: hidden; width: 100%; height: 100%" :id="index" :thumb="gif.thumbnail" :gif="gif.link" :src="gif.thumbnail"/>
+                   <i class="material-icons gif-play">play_circle_filled</i>
+                  </div>
+                  <div class="mdl-card__supporting-text">
+                    <button type="button" class="mdl-chip" v-for="(tag, index) in gif.tags.slice(0,4)">
+                            <span class="mdl-chip__text">{{ tag.name }}</span>
+                        </button>
+                  </div>
+                  <div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                      View Gif
+                    </a>
+                  </div>
+                </div>
               </div>
-
-            </div>
+              <!-- End card -->
           </div>
         </div>
       </main>

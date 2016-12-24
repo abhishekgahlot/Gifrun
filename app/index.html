@@ -116,7 +116,7 @@
                    <i class="material-icons gif-play">play_circle_filled</i>
                   </div>
                   <div class="mdl-card__supporting-text">
-                    <button type="button" class="mdl-chip" v-for="(tag, index) in gif.tags.slice(0,4)">
+                    <button type="button" class="mdl-chip tags" v-for="(tag, index) in gif.tags.slice(0,4)">
                             <span class="mdl-chip__text">{{ tag.name }}</span>
                         </button>
                   </div>
@@ -145,7 +145,7 @@
                   <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--8-col">
                       <div class="gif-tags">
-                        <button type="button" class="mdl-chip" v-for="(tag, index) in gif.tags.slice(0,4)">
+                        <button type="button" class="mdl-chip tags" v-for="(tag, index) in gif.tags.slice(0,4)">
                             <span class="mdl-chip__text">{{ tag.name }}</span>
                         </button>
                       </div>

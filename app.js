@@ -13,6 +13,7 @@ const bluebird = require('bluebird');
 const database = require('./server/db/interface');
 const dbw = require('./server/db/wrapper').dbw;
 const stream = require('./server/stream/stream');
+const search = require('./server/search/search');
 
 global.Promise = bluebird;
 
@@ -169,6 +170,21 @@ app.post('/signup', (req, res) => {
 
 
 /*
+  Search query using reql command.
+*/
+
+app.get('/search', (req, res) => {
+  let query = req.query.query;
+  search.find(query.toString())
+  .then((data) => {
+    res.json(data);
+  })
+  .catch((err) => {
+    res.json([]);
+  });
+});
+
+/*
   Logout to kill session
 */
 
@@ -178,7 +194,7 @@ app.get('/logout', (req, res) => {
 });
 
 app.get('/files', (req, res) => {
-  stream.random(20)
+  stream.random(10)
   .then((data) => {
     res.json(data);
   });

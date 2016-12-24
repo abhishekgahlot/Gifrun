@@ -427,6 +427,7 @@ a:focus, a:hover{
   padding-bottom: 6px;
   padding-top: 7px;
   font-size: 18px;
+  color: #999999;
 }
 
 .searchbar .btn:focus, .searchbar .btn:hover {
@@ -548,7 +549,7 @@ img:focus, canvas:focus, :focus {
 /* Tags */
 .mdl-chip {
   margin-left: 5px;
-  background-color: #607d8b;
+  background-color: #4caf50;
   color: #fff;
 }
 
@@ -556,7 +557,7 @@ img:focus, canvas:focus, :focus {
   font-size: 30px;
 }
 
-.share-outer {
+.share-menu {
   float: right;
 }
 
@@ -567,4 +568,45 @@ img:focus, canvas:focus, :focus {
   margin-left: -32px;
   position: absolute;
   left: 50%;
+  cursor: pointer;
+}
+
+.mdl-card__supporting-text {
+  padding-top: 0px;
+}
+
+a {
+  color: rgb(33, 150, 243);
+}
+
+.btn-social.btn-xs {
+  min-width: 30px !important;
+  height: 30px !important;
+  width: 30px !important;
+  padding: 0px !important;
+  border-radius: 18px !important;
+}
+
+.btn-social.btn-xs :first-child{
+  margin-left: -10px !important;
+  margin-top: -7px !important;
+}
+
+.gif-socialbuttons-wrapper {
+  padding: 0px !important;
+  width: 100% !important;
+}
+
+.gif-socialbuttons-wrapper .mdl-grid {
+  padding-top: 0px !important;
+}
+
+.social-buttons {
+  overflow: hidden;
+  height: 35px;
+}
+
+.social-buttons .btn {
+  margin-left: 4px !important;
+  float:right;
 }

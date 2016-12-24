@@ -7,7 +7,9 @@ const stream = {
     let tagsData = tags.filter((a) => {
       delete a['mid'];
       delete a['score'];
-      return a.desc;
+      a['name'] = a['desc'];
+      delete a['desc']
+      return a.name;
     });
 
     return tagsData.reduce((a, b) =>{
@@ -15,20 +17,24 @@ const stream = {
     },[]);
   },
 
+  formatData: (data) => {
+    let newData = []
+    for(let file of data) {
+      newData.push({
+        message: file.name,
+        link: config.s3.prefix + file.name + '.gif',
+        thumbnail: config.s3.prefix + file.name + '.jpg',
+        tags: stream.filterReduce(file.tags)
+      });
+    }
+    return newData;
+  },
+
   random: (count) => {
     return new Promise((resolve, reject) => {
       dbw.find('gifs', {}, count)
       .then((data) => { 
-        let newData = []
-        for(let file of data) {
-          newData.push({
-            message: file.name,
-            link: config.s3.prefix + file.name + '.gif',
-            thumbnail: config.s3.prefix + file.name + '.jpg',
-            tags: stream.filterReduce(file.tags)
-          });
-        }
-        resolve(newData);
+        resolve(stream.formatData(data));
       });
     });
   }

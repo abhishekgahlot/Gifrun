@@ -47,3 +47,31 @@ var app = new Vue({
 });
 
 
+var search = new Vue({
+  el: '#search',
+  data: {
+
+  },
+  mounted: function() {
+    var searchBar = document.getElementById('search-bar');
+    var mainBody = document.querySelector('.main-body');
+    var searchBody = document.getElementById('search');
+    
+    searchBar.onkeyup = function(){
+      if (searchBar.value) {
+        mainBody.style.display = "none";
+        searchBody.style.display = "block";
+      } else {
+        mainBody.style.display = "block";
+        searchBody.style.display = "none";
+      }
+    }
+  },
+  methods: {
+    getSearch: function() {
+
+    }
+  }
+});
+
+

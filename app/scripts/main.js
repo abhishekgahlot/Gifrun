@@ -29,24 +29,36 @@ var app = new Vue({
     searchBtn = document.getElementById('searchBtn');
     searchBtn.onclick = this.search;
   },
+
   methods: {
     getFiles: function() {
       return new Promise(function(resolve, reject) {
         this.$http.get('/files')
         .then(function(files){
           this.gifs = files.body;
+          Vue.nextTick(function(){
+            componentHandler.upgradeDom('MaterialProgress', 'mdl-progress');
+          })
           resolve(true);
         });
       }.bind(this));
     },
+
     imageHandler: function() {
       var imgLoad = imagesLoaded(document.querySelectorAll('#app img'));
+      var that = this;
       imgLoad.on( 'progress', function( instance, image ) {
         var result = image.isLoaded ? 'loaded' : 'broken';
-        console.log( 'image is ' + result + ' for ' + image.img.src, image.img.getAttribute('data-gif') );
-        window.bat = image;
+        //console.log( 'image is ' + result + ' for ' + image.img.src, image.img.getAttribute('data-gif') );
+        image.img.onclick = that.loadGif;
       });
     },
+
+    loadGif: function(e) {
+      var currentGif = new SuperGif({ gif: document.getElementById(e.target.id) } );
+      currentGif.load();
+    },
+
     search: function() {
       if (document.getElementById('search-bar').value) {
         search._render();
@@ -88,5 +100,3 @@ var search = new Vue({
     }
   }
 });
-
-

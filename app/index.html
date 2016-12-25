@@ -111,7 +111,7 @@
              <!-- start card -->
               <div class="mdl-cell mdl-cell--4-col" v-for="(gif, index) in searchResults">
                 <div class="demo-card-square mdl-card mdl-shadow--2dp">
-                  <div class="mdl-card__title">
+                  <div class="mdl-card__title" :id="index+gif">
                    <img class="gif" style="overflow: hidden; width: 100%; height: 100%" :id="index" :thumb="gif.thumbnail" :gif="gif.link" :src="gif.thumbnail"/>
                    <i class="material-icons gif-play">play_circle_filled</i>
                   </div>
@@ -135,13 +135,14 @@
         <div class="page-content">
           <div class="mdl-grid">
             <div class="center" id="app">
+
               <div class="card-wide mdl-card mdl-shadow--2dp" v-for="(gif, index) in gifs">
-                <div class="mdl-card__title">
-                 <img class="gif" :id="index" :thumb="gif.thumbnail" :gif="gif.link" :src="gif.thumbnail"/>
-                 <i class="material-icons gif-play">play_circle_filled</i>
+                <div class="mdl-card__title" :id="['wrapper-' + index]">
+                 <img class="gif" :id="['gif-' + index]" :thumb="gif.thumbnail" :gif="gif.link" :src="gif.thumbnail"/>
+                 <i :id="['playicon-' + index]" class="material-icons gif-play">play_circle_filled</i>
+                 <div :id="['mdl-progress-' + index]" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
                 </div>
                 <div class="mdl-card__supporting-text gif-socialbuttons-wrapper">
-
                   <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--8-col">
                       <div class="gif-tags">

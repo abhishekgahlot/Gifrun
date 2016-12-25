@@ -51,10 +51,10 @@ app.set('views', path.join(__dirname, 'app/'));
   Main Route
 */
 
-app.use(express.static('dist')); // only for development
+app.use(express.static('app')); // only for development
 app.use('/bower_components', express.static('bower_components'));
 
-const dir = 'dist';
+const dir = 'app'
 app.get('/', (req, res) => {
   res.sendFile('index.html', { root: dir });
 });

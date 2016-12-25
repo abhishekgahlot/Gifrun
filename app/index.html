@@ -139,8 +139,8 @@
               <div class="card-wide mdl-card mdl-shadow--2dp" v-for="(gif, index) in gifs">
                 <div class="mdl-card__title" :id="['wrapper-' + index]">
                  <img class="gif" :id="['gif-' + index]" :thumb="gif.thumbnail" :gif="gif.link" :src="gif.thumbnail"/>
-                 <i :id="['playicon-' + index]" class="material-icons gif-play">play_circle_filled</i>
-                 <div :id="['mdl-progress-' + index]" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+                 <i :id="['playicon-gif-' + index]" class="material-icons gif-play">play_circle_filled</i>
+                 <div :id="['progress-gif-' + index]" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
                 </div>
                 <div class="mdl-card__supporting-text gif-socialbuttons-wrapper">
                   <div class="mdl-grid">

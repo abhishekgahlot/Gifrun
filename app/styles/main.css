@@ -637,3 +637,8 @@ a {
   width: 100%;
   text-align: center;
 }
+
+.gif-tags {
+  height: 36px;
+  overflow: hidden;
+}

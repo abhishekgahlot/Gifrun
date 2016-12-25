@@ -16,9 +16,11 @@ Vue.http.get('/user').then(function(user){
 var app = new Vue({
   el: '#app',
   data: {
-    gifs: []
+    gifs: [],
+    gifCanvas: {}
   },
   mounted: function() {
+    window.gifCanvas = this.gifCanvas;
     var that = this;
     setTimeout(function(){
       that.getFiles()
@@ -50,13 +52,19 @@ var app = new Vue({
       imgLoad.on( 'progress', function( instance, image ) {
         var result = image.isLoaded ? 'loaded' : 'broken';
         //console.log( 'image is ' + result + ' for ' + image.img.src, image.img.getAttribute('data-gif') );
-        image.img.onclick = that.loadGif;
+        //image.img.onclick = that.loadGif;
+        document.getElementById("playicon-" + image.img.id).onclick = that.loadGif;
       });
     },
 
     loadGif: function(e) {
-      var currentGif = new SuperGif({ gif: document.getElementById(e.target.id) } );
-      currentGif.load();
+      var sibling = e.target.previousSibling.previousElementSibling;
+      var currentGif = window.gifCanvas[sibling.id] = new SuperGif({ gif: document.getElementById(sibling.id) } );
+      document.getElementById("progress-" + sibling.id).style.display = "block";
+      currentGif.load(function(){
+        document.getElementById("progress-" + sibling.id).style.display = "none";
+        document.getElementById("playicon-" + sibling.id).style.display = "none";
+      });
     },
 
     search: function() {

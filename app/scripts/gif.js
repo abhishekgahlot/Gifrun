@@ -560,7 +560,6 @@
 
                 // ctx.fillStyle = progressBarForegroundColor;
                 // ctx.fillRect(0, top, mid, height);
-                console.log('Showing progress for gif', gif);
             }
         };
 
@@ -825,7 +824,15 @@
             };
         };
 
-
+        var onclickHandler = function () {
+          var currGif = window.gifCanvas[this.gif.id];
+          if (currGif.get_playing()){
+            currGif.pause();
+          } else {
+            currGif.play();
+          }
+        }
+        
         var handler = {
             hdr: withProgress(doHdr),
             gce: withProgress(doGCE),
@@ -846,6 +853,11 @@
                 }
                 player.init();
                 loading = false;
+                canvas.style.visibility = "visible";
+                canvas.onclick = function(){
+                  this.gif = gif;
+                  onclickHandler.call(this);
+                }
                 if (load_callback) {
                     load_callback(gif);
                 }
@@ -853,11 +865,14 @@
             }
         };
 
+
+
         var init = function () {
             var parent = gif.parentNode;
 
             var div = document.createElement('div');
             canvas = document.createElement('canvas');
+            canvas.style.visibility = "hidden";
             ctx = canvas.getContext('2d');
             toolbar = document.createElement('div');
 
@@ -974,7 +989,6 @@
             },
             load: function (callback) {
                 this.load_url(gif.getAttribute('gif') || gif.src,callback);
-                console.log(gif, callback);
             },
             load_raw: function(arr, callback) {
                 if (!load_setup(callback)) return;

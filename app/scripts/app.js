@@ -117,7 +117,7 @@ var gifMain = new Vue({
   },
   mounted: function() {
     var that = this;
-    searchBtn = document.getElementById('searchBtn');
+    var searchBtn = document.getElementById('searchBtn');
     searchBtn.onclick = this.search;
     Vue.http.get('/files/' + this.currGif).then(function(gif){
       that.gifs = gif.body;

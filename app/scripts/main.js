@@ -1,26 +1,9 @@
-
-Vue.http.get('/user').then(function(user){
-  window.user = user.body;
-  if (user.body.name) {
-    var userDiv = document.getElementById('user-name');
-    userDiv.textContent = 'Hi '+user.body.name.split(' ').shift();
-
-    var userNav = document.getElementById('user-nav');
-    userNav.style.display = '';
-
-    var normalNav = document.getElementById('normal-nav');
-    normalNav.style.display = 'none';
-  }
-});
-
 var app = new Vue({
   el: '#app',
   data: {
-    gifs: [],
-    gifCanvas: {}
+    gifs: []
   },
   mounted: function() {
-    window.gifCanvas = this.gifCanvas;
     var that = this;
     setTimeout(function(){
       that.getFiles()
@@ -34,16 +17,17 @@ var app = new Vue({
 
   methods: {
     getFiles: function() {
+      var that = this;
       return new Promise(function(resolve, reject) {
-        this.$http.get('/files')
+        that.$http.get('/files')
         .then(function(files){
-          this.gifs = files.body;
+          that.gifs = files.body;
           Vue.nextTick(function(){
             componentHandler.upgradeDom('MaterialProgress', 'mdl-progress');
-          })
+          });
           resolve(true);
         });
-      }.bind(this));
+      });
     },
 
     imageHandler: function() {
@@ -53,17 +37,7 @@ var app = new Vue({
         var result = image.isLoaded ? 'loaded' : 'broken';
         //console.log( 'image is ' + result + ' for ' + image.img.src, image.img.getAttribute('data-gif') );
         //image.img.onclick = that.loadGif;
-        document.getElementById("playicon-" + image.img.id).onclick = that.loadGif;
-      });
-    },
-
-    loadGif: function(e) {
-      var sibling = e.target.previousSibling.previousElementSibling;
-      var currentGif = window.gifCanvas[sibling.id] = new SuperGif({ gif: document.getElementById(sibling.id) } );
-      document.getElementById("progress-" + sibling.id).style.display = "block";
-      currentGif.load(function(){
-        document.getElementById("progress-" + sibling.id).style.display = "none";
-        document.getElementById("playicon-" + sibling.id).style.display = "none";
+        document.getElementById("playicon-" + image.img.id).onclick = loadGif;
       });
     },
 

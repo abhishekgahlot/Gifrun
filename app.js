@@ -184,6 +184,16 @@ app.get('/search', (req, res) => {
   });
 });
 
+
+app.get('/gif/:gif', (req, res) => {
+  let id = req.params.gif;
+  if (!id) {
+    res.json([]);
+    return;
+  }
+  res.sendFile('gif.html', { root: dir });
+});
+
 /*
   Logout to kill session
 */
@@ -197,6 +207,13 @@ app.get('/files', (req, res) => {
   stream.random(10)
   .then((data) => {
     res.json(data);
+  });
+});
+
+app.get('/files/:gif', (req, res) => {
+  dbw.find('gifs', {"name": req.params.gif.toString()})
+  .then((data) => { 
+    res.json(stream.formatData(data));
   });
 });
 

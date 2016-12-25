@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gif</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/bower_components/material-design-lite/material.min.css" />
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue-indigo.min.css" />
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/library.css">
+    <!-- endbuild -->
+    
+  </head>
+  <body>
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Always shows a header, even in smaller screens. -->
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">GIF.RUN</span>
+          <!-- Add spacer, to align navigation to the right -->
+          <!-- <div class="h-search-wrap">
+            <div class="hsw-inner">
+                <input type="text" placeholder="Search">
+                <i class="hsw-close zmdi zmdi-arrow-right" data-ma-action="search-close"></i>
+            </div>
+          </div> -->
+
+          <div class="input-group searchbar">
+            <input type="text" class="form-control search-input" id="search-bar" placeholder="Search">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button" id="searchBtn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+            </span>
+          </div>
+          <div class="mdl-layout-spacer"></div>
+          <!-- 
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                  mdl-textfield--floating-label mdl-textfield--align-right is-focused">
+            <label class="mdl-button mdl-js-button mdl-button--icon"
+                   for="fixed-header-drawer-exp">
+              <i class="material-icons">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input search-input" type="text" name="sample"
+                     id="fixed-header-drawer-exp" placeholder="Search...">
+            </div>
+          </div> -->
+          <!-- Navigation. We hide it in small screens. -->
+          <nav class="mdl-navigation" id="normal-nav">
+            <a class="mdl-navigation__link" data-toggle="modal" data-target="#loginUser">Sign in</a>
+            <a class="mdl-navigation__link" data-toggle="modal" data-target="#registerUser">Sign up</a>
+          </nav>
+
+          <nav class="mdl-navigation" id="user-nav" style="display: none;">
+            <button id="user-menu-lower-right"
+                    class="mdl-button mdl-js-button">
+              <i class="material-icons">more_vert</i>
+            </button>
+
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                for="user-menu-lower-right">
+              <li disabled id="user-name" class="mdl-menu__item"></li>
+              <li class="mdl-menu__item"><a href="/#favourites">Favourites</a></li>
+              <li class="mdl-menu__item"><a href="/logout">Logout</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer" style="display:none;">
+        <span class="mdl-layout-title">Title</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+        </nav>
+      </div>
+
+      <div class="mdl-layout__drawer-right" style="display: none;">
+        <span class="mdl-layout-title">Trending</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+        </nav>
+       </div>
+      <main class="mdl-layout__content main-search" style="display:none;" id="search">
+        <div class="page-content">
+          <h2>Search</h2>
+          <div class="mdl-grid">
+             <!-- start card -->
+              <div class="mdl-cell mdl-cell--4-col" v-for="(gif, index) in searchResults">
+                <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                  <div class="mdl-card__title" :id="index+gif">
+                   <img class="gif" style="overflow: hidden; width: 100%; height: 100%" :id="index" :thumb="gif.thumbnail" :gif="gif.link" :src="gif.thumbnail"/>
+<!--                    <i class="material-icons gif-play">play_circle_filled</i>
+ -->                  </div>
+
+                <!-- <div class="mdl-card__title" :id="['wrapper-' + index]">
+                 <img class="gif" style="overflow: hidden; width: 100%; height: 100%" class="gif" :id="['gif-' + index]" :thumb="gif.thumbnail" :gif="gif.link" :src="gif.thumbnail"/>
+                 <i :id="['playicon-gif-' + index]" class="material-icons gif-play">play_circle_filled</i>
+                 <div :id="['progress-gif-' + index]" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+                </div> -->
+
+                  <div class="mdl-card__supporting-text">
+                    <button type="button" class="mdl-chip tags" v-for="(tag, index) in gif.tags.slice(0,4)">
+                            <span class="mdl-chip__text">{{ tag.name }}</span>
+                        </button>
+                  </div>
+                  <div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                      View Gif
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <!-- End card -->
+          </div>
+        </div>
+      </main>
+      <main class="mdl-layout__content main-body">
+        <div class="page-content">
+          <div class="mdl-grid">
+            <div class="center" id="gifWrap">
+
+              <div class="card-wide mdl-card mdl-shadow--2dp" v-for="(gif, index) in gifs">
+                <div class="mdl-card__title" :id="['wrapper-' + gif.message]">
+                 <img class="gif" :id="['gif-' + gif.message]" :thumb="gif.thumbnail" :gif="gif.link" :src="gif.thumbnail"/>
+                 <i :id="['playicon-gif-' + gif.message]" class="material-icons gif-play">play_circle_filled</i>
+                 <div :id="['progress-gif-' + gif.message]" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+                </div>
+                <div class="mdl-card__supporting-text gif-socialbuttons-wrapper">
+                  <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--8-col">
+                      <div class="gif-tags">
+                        <button type="button" class="mdl-chip tags" v-for="(tag, index) in gif.tags.slice(0,4)">
+                            <span class="mdl-chip__text">{{ tag.name }}</span>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col">
+                      
+                      <div class="social-buttons">
+                        <a class="btn btn-xs btn-social btn-twitter mdl-button mdl-js-button mdl-button--raised mdl-button--accent" target="_self" href="/login/twitter"><i class="fa fa-twitter"></i></a>
+
+                        <a class="btn btn-xs btn-social btn-google-plus mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-red" href="/login/google" target="_self"><i class="fa fa-google"></i></a>
+
+                        <a class="btn btn-xs btn-social btn-facebook mdl-button mdl-js-button mdl-button--raised mdl-button--colored" target="_self" href="/login/facebook" data-upgraded=",MaterialButton"><i class="fa fa-facebook"></i></a>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="mdl-card__actions mdl-card--border hide">
+                   <!--  <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect favorite-outer">
+                      <i class="material-icons">favourite_border</i>
+                    </a> -->
+
+                  
+
+                </div>
+                <div class="mdl-card__menu">
+                </div>
+              </div>
+
+            </div>
+        </div>
+        </div>
+      </main>
+
+
+    </div>
+
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-main" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+                  <div class="form-group text-center">
+                      <a class="btn btn-block btn-social btn-facebook mdl-button mdl-js-button mdl-button--raised mdl-button--colored" target="_self" href="/login/facebook"><i class="fa fa-facebook"></i> <span>Sign in with Facebook</span></a>
+                  </div>
+                  <div class="form-group text-center mg-top">
+                      <a class="btn btn-block btn-social btn-google-plus mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-red" target="_self" href="/login/google"><i class="fa fa-google"></i> <span>Sign in with Google</span></a>
+                  </div>
+                  <div class="form-group text-center mg-top">
+                      <a class="btn btn-block btn-social btn-twitter mdl-button mdl-js-button mdl-button--raised mdl-button--accent" target="_self" href="/login/twitter"><i class="fa fa-twitter"></i> <span>Sign in with Twitter</span></a>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-main" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
+                        <div class="form-group text-center">
+                            <a class="btn btn-block btn-social btn-facebook mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="/login/facebook" target="_self"><i class="fa fa-facebook"></i> <span>Sign up with Facebook</span></a>
+                        </div>
+                        <div class="form-group text-center mg-top">
+                            <a class="btn btn-block btn-social btn-google-plus mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-red" href="/login/google" target="_self"><i class="fa fa-google"></i> <span>Sign up with Google</span></a>
+                        </div>
+                        <div class="form-group text-center mg-top">
+                            <a class="btn btn-block btn-social btn-twitter mdl-button mdl-js-button mdl-button--raised mdl-button--accent" href="/login/twitter" target="_self"><i class="fa fa-twitter"></i> <span>Sign up with Twitter</span></a>
+                        </div>
+                    </div>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='https://www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/material-design-lite/material.min.js"></script>
+    <script src="/bower_components/vue/dist/vue.js"></script>
+    <script src="/bower_components/vue-resource/dist/vue-resource.js"></script>
+    <script src="/bower_components/bootstrap.native/dist/bootstrap-native.js"></script>
+    <script src="/bower_components/ev-emitter/ev-emitter.js"></script>
+    <script src="/bower_components/imagesloaded/imagesloaded.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/main.js -->
+    <script src="/scripts/gif.js"></script>
+    <script src="/scripts/app.js"></script>
+    <script src="/scripts/gifWrap.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>

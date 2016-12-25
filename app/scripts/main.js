@@ -11,7 +11,7 @@ var app = new Vue({
         that.imageHandler();
       });
     }, 500);
-    searchBtn = document.getElementById('searchBtn');
+    var searchBtn = document.getElementById('searchBtn');
     searchBtn.onclick = this.search;
   },
 
@@ -37,7 +37,7 @@ var app = new Vue({
         var result = image.isLoaded ? 'loaded' : 'broken';
         //console.log( 'image is ' + result + ' for ' + image.img.src, image.img.getAttribute('data-gif') );
         //image.img.onclick = that.loadGif;
-        document.getElementById("playicon-" + image.img.id).onclick = loadGif;
+        document.getElementById('playicon-' + image.img.id).onclick = loadGif;
       });
     },
 

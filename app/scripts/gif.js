@@ -62,15 +62,6 @@
       http://humpy77.deviantart.com/journal/Frame-Delay-Times-for-Animated-GIFs-214150546
 
 */
-(function (root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define([], factory);
-    } else if (typeof exports === 'object') {
-        module.exports = factory();
-    } else {
-        root.SuperGif = factory();
-    }
-}(this, function () {
     // Generic functions
     var bitsToNum = function (ba) {
         return ba.reduce(function (s, n) {
@@ -762,8 +753,8 @@
 
                 offset = frameOffsets[i];
 
-                tmpCanvas.getContext("2d").putImageData(frames[i].data, offset.x, offset.y);
-                ctx.globalCompositeOperation = "copy";
+                tmpCanvas.getContext('2d').putImageData(frames[i].data, offset.x, offset.y);
+                ctx.globalCompositeOperation = 'copy';
                 ctx.drawImage(tmpCanvas, 0, 0);
             };
 
@@ -853,7 +844,7 @@
                 }
                 player.init();
                 loading = false;
-                canvas.style.visibility = "visible";
+                canvas.style.visibility = 'visible';
                 canvas.onclick = function(){
                   this.gif = gif;
                   onclickHandler.call(this);
@@ -872,7 +863,7 @@
 
             var div = document.createElement('div');
             canvas = document.createElement('canvas');
-            canvas.style.visibility = "hidden";
+            canvas.style.visibility = 'hidden';
             ctx = canvas.getContext('2d');
             toolbar = document.createElement('div');
 
@@ -974,7 +965,7 @@
                         this.response = new VBArray(this.responseText).toArray().map(String.fromCharCode).join('');
                     }
                     var data = this.response;
-                    if (data.toString().indexOf("ArrayBuffer") > 0) {
+                    if (data.toString().indexOf('ArrayBuffer') > 0) {
                         data = new Uint8Array(data);
                     }
 
@@ -999,9 +990,6 @@
             set_frame_offset: setFrameOffset
         };
     };
-
-    return SuperGif;
-}));
 
 
 /*
@@ -1058,15 +1046,7 @@
     vp_t, vp_l, vp_ w, vp_h - top, left, width and height of the viewport
 
 */
-(function (root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['./libgif'], factory);
-    } else if (typeof exports === 'object') {
-        module.exports = factory(require('./libgif'));
-    } else {
-        root.RubbableGif = factory(root.SuperGif);
-    }
-}(this, function (SuperGif) {
+
     var RubbableGif = function( options ) {
         var sup = new SuperGif( options );
 
@@ -1085,7 +1065,7 @@
                 startX = 0,
                 startTime = 0;
 
-            var cantouch = "ontouchend" in document;
+            var cantouch = 'ontouchend' in document;
 
             var aj = 0;
             var last_played = 0;
@@ -1152,6 +1132,3 @@
 
         return sup;
     }
-
-    return RubbableGif;
-}));

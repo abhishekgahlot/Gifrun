@@ -17,10 +17,10 @@ Vue.http.get('/user').then(function(user){
 window.loadGif = function(e) {
   var sibling = e.target.previousSibling.previousElementSibling;
   var currentGif = window.gifCanvas[sibling.id] = new SuperGif({ gif: document.getElementById(sibling.id) } );
-  document.getElementById("progress-" + sibling.id).style.display = "block";
+  document.getElementById('progress-' + sibling.id).style.display = 'block';
   currentGif.load(function(){
-    document.getElementById("progress-" + sibling.id).style.display = "none";
-    document.getElementById("playicon-" + sibling.id).style.display = "none";
+    document.getElementById('progress-' + sibling.id).style.display = 'none';
+    document.getElementById('playicon-' + sibling.id).style.display = 'none';
   });
 }
 
@@ -42,16 +42,16 @@ var search = new Vue({
       var that = this;
 
       if (query) {
-        mainBody.style.display = "none";
-        searchBody.style.display = "block";
+        mainBody.style.display = 'none';
+        searchBody.style.display = 'block';
         Vue.http.get('/search?query=' + query)
         .then(function(result){
           that.searchResults = result.body;
           search._render();
         });
       } else {
-        mainBody.style.display = "block";
-        searchBody.style.display = "none";
+        mainBody.style.display = 'block';
+        searchBody.style.display = 'none';
       }
     }
   }

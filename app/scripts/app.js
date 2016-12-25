@@ -23,3 +23,36 @@ window.loadGif = function(e) {
     document.getElementById("playicon-" + sibling.id).style.display = "none";
   });
 }
+
+var search = new Vue({
+  el: '#search',
+  data: {
+    searchResults: [],
+    searchBar: null,
+  },
+  mounted: function() {
+    this.searchBar = document.getElementById('search-bar');
+    this.searchBar.onkeyup = this.getSearch;
+  },
+  methods: {
+    getSearch: function() {
+      var mainBody = document.querySelector('.main-body');
+      var searchBody = document.getElementById('search');
+      var query = this.searchBar.value;
+      var that = this;
+
+      if (query) {
+        mainBody.style.display = "none";
+        searchBody.style.display = "block";
+        Vue.http.get('/search?query=' + query)
+        .then(function(result){
+          that.searchResults = result.body;
+          search._render();
+        });
+      } else {
+        mainBody.style.display = "block";
+        searchBody.style.display = "none";
+      }
+    }
+  }
+});

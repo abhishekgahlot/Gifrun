@@ -6,6 +6,8 @@ var gifMain = new Vue({
   },
   mounted: function() {
     var that = this;
+    searchBtn = document.getElementById('searchBtn');
+    searchBtn.onclick = this.search;
     Vue.http.get('/files/' + this.currGif).then(function(gif){
       that.gifs = gif.body;
       Vue.nextTick(function(){
@@ -21,6 +23,10 @@ var gifMain = new Vue({
     });
   },
   methods: {
-    
+    search: function() {
+      if (document.getElementById('search-bar').value) {
+        search._render();
+      }
+    }
   }
-})
+});
